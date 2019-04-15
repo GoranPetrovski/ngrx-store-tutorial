@@ -5,25 +5,27 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducers/tutorial.reducer';
 import { ReadComponent } from './read/read.component';
-import { CreateComponent } from './create/create.component';
-import { BlockchainComponent } from './blockchain/blockchain.component';
+import { TutorialComponent } from './tutorial/tutorial.component';
 import { addCoinReducer } from './reducers/blockchain.reducer';
+import { DisplayTutorialsComponent } from './display-tutorials/display-tutorials.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReadComponent,
-    CreateComponent,
-    BlockchainComponent
+    TutorialComponent,
+    DisplayTutorialsComponent,
   ],
   imports: [
     BrowserModule,
     StoreModule.forRoot({
       tutorial: reducer,
-      blockchain: addCoinReducer
-    })
+      blockchain: addCoinReducer,
+    }),
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

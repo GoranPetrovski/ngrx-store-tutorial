@@ -3,5 +3,4 @@ import { Blockchain } from './models/blockchain.model';
 
 export interface AppState {
   readonly tutorial: Tutorial[];
-  readonly blockchain: Blockchain[];
 }

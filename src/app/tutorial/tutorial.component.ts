@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Blockchain } from '../models/blockchain.model';
 import { AppState } from '../app.state';
 import { Store } from '@ngrx/store';
 import { Tutorial } from '../models/tutorial.model';
 import { ADD_TUTORIAL } from '../actions/tutorial.actions';
+import * as TutorialActions from './../actions/tutorial.actions';
 
 @Component({
   selector: 'app-tutorial',
@@ -14,6 +14,8 @@ import { ADD_TUTORIAL } from '../actions/tutorial.actions';
 export class TutorialComponent implements OnInit {
   angForm: FormGroup;
   tutorial: Tutorial;
+  ID = 1;
+  title = 'Add new Tutorial';
 
   tutorialCategories: { title: string; image: string }[] = [
     { title: 'Choose type of tutorial', image: '' },
@@ -30,22 +32,29 @@ export class TutorialComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       name: ['', Validators.required],
-      price: ['', Validators.required],
+      category: ['', Validators.required],
+      url: ['', Validators.required],
     });
   }
 
-  addCoin(name, price) {
-    this.store.dispatch({
-      type: 'ADD_COIN',
-      payload: <Blockchain>{ name, price },
-    });
+  addTutorial(newTutorial) {
+    this.store.dispatch(new TutorialActions.AddTutorial(newTutorial));
+    //this.angForm.reset();
+    this.resetTutorial();
   }
 
   ngOnInit() {
+    this.resetTutorial();
+  }
+
+  resetTutorial() {
     this.tutorial = {
+      id: this.ID++,
       name: '',
       category: '',
       url: '',
+      isOpened: false,
+      isCompleted: false,
     };
   }
 }

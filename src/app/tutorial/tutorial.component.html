@@ -1,8 +1,8 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
+<div class="card card-primary">
+  <div class="card-header">
     {{ title }}
   </div>
-  <div class="panel-body">
+  <div class="card-body">
     <form [formGroup]="angForm" novalidate>
       <div class="form-group">
         <div class="row">
@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <div
+      <!-- <div
         *ngIf="
           angForm.controls['name'].invalid &&
           (angForm.controls['name'].dirty || angForm.controls['name'].touched)
@@ -29,24 +29,27 @@
         <div *ngIf="angForm.controls['name'].errors.required">
           Name is required.
         </div>
-      </div>
+      </div> -->
       <div class="form-group">
         <div class="row">
           <div class="col-md-4">
             <label>Tutorial Type</label>
           </div>
           <div class="col-md-4">
-            <select class="mdb-select md-form" searchable="Search here..">
+            <select
+              class="mdb-select md-form"
+              formControlName="category"
+              searchable="Search here.."
+              [(ngModel)]="tutorial.category"
+              name="category"
+            >
               <option
                 *ngFor="let category of tutorialCategories"
-                [value]="category.title"
+                [value]="category.image"
               >
                 {{ category.title }}
               </option>
             </select>
-          </div>
-          <div class="col-md-4">
-            <img src="assets/imgs/java.png" />
           </div>
         </div>
       </div>
@@ -59,26 +62,26 @@
             <input
               type="text"
               class="form-control"
-              formControlName="price"
+              formControlName="url"
               [(ngModel)]="tutorial.url"
             />
           </div>
         </div>
       </div>
-      <div
+      <!-- <div
         *ngIf="
-          angForm.controls['price'].invalid &&
-          (angForm.controls['price'].dirty || angForm.controls['price'].touched)
+          angForm.controls['url'].invalid &&
+          (angForm.controls['url'].dirty || angForm.controls['url'].touched)
         "
         class="alert alert-danger"
       >
-        <div *ngIf="angForm.controls['price'].errors.required">
-          Price is required.
+        <div *ngIf="angForm.controls['url'].errors.required">
+          Url is required.
         </div>
-      </div>
+      </div> -->
       <div class="form-group">
         <button
-          (click)="addCoin(tutorial.name, tutorial.url)"
+          (click)="addTutorial(tutorial)"
           [disabled]="angForm.pristine || angForm.invalid"
           class="btn btn-primary"
         >
@@ -86,6 +89,5 @@
         </button>
       </div>
     </form>
-    // {{ tutorial | json }}//
   </div>
 </div>

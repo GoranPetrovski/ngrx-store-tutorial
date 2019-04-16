@@ -29,11 +29,16 @@ export class DisplayTutorialsComponent implements OnInit {
 
   ngOnInit() {}
 
-  openTutorial(id: number) {
+  openTutorial(id: number, url: string) {
     this.store.dispatch(new TutorialActions.OpenTutorial(id));
+    window.open(url, '_blank');
   }
 
   completed(id: number) {
     this.store.dispatch(new TutorialActions.CompletedTutorial(id));
+  }
+
+  remove(id: number) {
+    this.store.dispatch(new TutorialActions.RemoveTutorial(id));
   }
 }

@@ -18,15 +18,15 @@ export function reducer(
     case TutorialActions.ADD_TUTORIAL:
       return [...state, action.payload];
     case TutorialActions.REMOVE_TUTORIAL:
-      state.splice(action.payload, 1);
-      return state;
+      const filteredState = state.filter(s => s.id !== action.payload);
+      return filteredState;
     case TutorialActions.OPEN_TUTORIAL:
       const selectedTutorial = state.find(t => t.id === action.payload);
-      selectedTutorial.isOpened = true;
+      selectedTutorial ? (selectedTutorial.isOpened = true) : selectedTutorial;
       return state;
     case TutorialActions.COMPLETED_TUTORIAL:
       const selected = state.find(t => t.id === action.payload);
-      selected.isCompleted = true;
+      selected ? (selected.isCompleted = true) : selected;
       return state;
     default:
       return state;

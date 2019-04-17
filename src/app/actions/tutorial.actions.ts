@@ -1,10 +1,24 @@
 import { Action } from '@ngrx/store';
 import { Tutorial } from '../models/tutorial.model';
 
+export const LOAD_TUTORIALS = '[TUTORIAL] Load';
+export const LOAD_SUCCESS_TUTORIALS = '[TUTORIAL] Load Success';
 export const ADD_TUTORIAL = '[TUTORIAL] Add';
 export const REMOVE_TUTORIAL = '[TUTORIAL] Remove';
 export const OPEN_TUTORIAL = '[TUTORIAL] Open';
 export const COMPLETED_TUTORIAL = '[TUTORIAL] Completed';
+
+export class LoadTutorial implements Action {
+  readonly type = LOAD_TUTORIALS;
+
+  constructor() {}
+}
+
+export class LoadSuccessTutorial implements Action {
+  readonly type = LOAD_SUCCESS_TUTORIALS;
+
+  constructor(public payload: Tutorial[]) {}
+}
 
 export class AddTutorial implements Action {
   readonly type = ADD_TUTORIAL;
@@ -30,4 +44,10 @@ export class CompletedTutorial implements Action {
   constructor(public payload: number) {}
 }
 
-export type Actions = AddTutorial | RemoveTutorial | OpenTutorial | CompletedTutorial;
+export type Actions =
+  | AddTutorial
+  | RemoveTutorial
+  | OpenTutorial
+  | CompletedTutorial
+  | LoadTutorial
+  | LoadSuccessTutorial;

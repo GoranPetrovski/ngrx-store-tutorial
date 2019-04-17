@@ -14,7 +14,7 @@ import * as TutorialActions from './../actions/tutorial.actions';
 export class TutorialComponent implements OnInit {
   angForm: FormGroup;
   tutorial: Tutorial;
-  ID = 1;
+  ID = 3;
   title = 'Add new Tutorial';
 
   tutorialCategories: { title: string; image: string }[] = [
@@ -39,7 +39,6 @@ export class TutorialComponent implements OnInit {
 
   addTutorial(newTutorial) {
     this.store.dispatch(new TutorialActions.AddTutorial(newTutorial));
-    //this.angForm.reset();
     this.resetTutorial();
   }
 

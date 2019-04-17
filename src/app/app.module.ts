@@ -8,6 +8,9 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { DisplayTutorialsComponent } from './display-tutorials/display-tutorials.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EffectsModule } from '@ngrx/effects';
+import { TutorialEffect } from './effects/tutorial.effect';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, TutorialComponent, DisplayTutorialsComponent],
@@ -16,8 +19,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     StoreModule.forRoot({
       tutorial: reducer,
     }),
+    EffectsModule.forRoot([TutorialEffect]),
     ReactiveFormsModule,
     FontAwesomeModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

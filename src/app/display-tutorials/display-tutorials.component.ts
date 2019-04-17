@@ -11,6 +11,7 @@ import {
   faCheckCircle,
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import { TutorialService } from '../services/tutorial.service';
 
 @Component({
   selector: 'app-display',
@@ -23,11 +24,14 @@ export class DisplayTutorialsComponent implements OnInit {
   faEyeSlash = faEyeSlash;
   faCheckCircle = faCheckCircle;
   faTimesCircle = faTimesCircle;
+
   constructor(private store: Store<AppState>) {
     this.tutorials = this.store.select(state => state.tutorial);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.dispatch(new TutorialActions.LoadTutorial());
+  }
 
   openTutorial(id: number, url: string) {
     this.store.dispatch(new TutorialActions.OpenTutorial(id));

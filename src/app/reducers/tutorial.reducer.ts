@@ -15,6 +15,8 @@ export function reducer(
   action: TutorialActions.Actions
 ) {
   switch (action.type) {
+    case TutorialActions.LOAD_SUCCESS_TUTORIALS:
+      return [...state, ...action.payload];
     case TutorialActions.ADD_TUTORIAL:
       return [...state, action.payload];
     case TutorialActions.REMOVE_TUTORIAL:

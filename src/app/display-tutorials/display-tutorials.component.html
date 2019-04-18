@@ -17,7 +17,11 @@
         <img [src]="tutorial.category" class="img-thumbnail" height="50" width="65" />
       </td>
       <td>{{ tutorial.name }}</td>
-      <td>{{ tutorial.url }}</td>
+      <td>
+        <strong
+          ><i> {{ tutorial.url | slice: 0:20 }} ... </i></strong
+        >
+      </td>
       <td>
         <div class="center">
           <fa-icon

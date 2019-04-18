@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { TutorialEffect } from './effects/tutorial.effect';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent, TutorialComponent, DisplayTutorialsComponent],
@@ -18,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     StoreModule.forRoot({
       tutorial: reducer,
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10,
     }),
     EffectsModule.forRoot([TutorialEffect]),
     ReactiveFormsModule,

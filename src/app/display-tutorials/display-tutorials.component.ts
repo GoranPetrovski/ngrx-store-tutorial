@@ -25,7 +25,7 @@ export class DisplayTutorialsComponent implements OnInit {
   faCheckCircle = faCheckCircle;
   faTimesCircle = faTimesCircle;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private tutorialService: TutorialService, private store: Store<AppState>) {
     this.tutorials = this.store.select(state => state.tutorial);
   }
 

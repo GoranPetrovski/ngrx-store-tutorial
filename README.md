@@ -1,3 +1,5 @@
+https://cdn-images-1.medium.com/max/1200/1*EdiFUfbTNmk_IxFDNqokqg.png
+
 # NgrxTutorial
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
